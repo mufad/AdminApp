@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:padding="5dp"
+    android:id="@+id/container"
+    android:weightSum="7">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_weight="4">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dummy Title"
+        android:textColor="@android:color/black"
+        android:id="@+id/titleText"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/postedByText"
+        android:text="Dummy"
+        android:layout_below="@id/titleText"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dateText"
+        android:text="Dummy Date"
+        android:layout_below="@+id/postedByText"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/daysToSolve"
+        android:text="Days to go"
+        android:layout_marginLeft="3dp"
+        android:layout_alignBaseline="@+id/dateText"
+        android:layout_alignBottom="@+id/dateText"
+        android:layout_toRightOf="@+id/dateText"
+        android:layout_toEndOf="@+id/dateText" />
+
+</RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/item_image"
+        android:layout_weight="3"/>
+</LinearLayout>

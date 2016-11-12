@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AdminApp</string>
+    <string name="tshirt">T-Shirt</string>
+    <string name="watch">Watch</string>
+    <string name="Wristbands">Wristbands</string>
+    <string name="problemTitle">Problem</string>
+    <string name="solution">Solution</string>
+    <string name="title_activity_maps">Map</string>
+</resources>

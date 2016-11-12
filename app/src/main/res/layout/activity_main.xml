@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.droiddigger.adminapp.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="5dp"
+            android:onClick="openCamera"
+            android:id="@+id/camera"
+            android:src="@drawable/ic_camera_enhance_black_48dp"/>
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="5dp"
+            android:onClick="select"
+            android:layout_toRightOf="@id/camera"
+            android:id="@+id/folder"
+            android:src="@drawable/ic_folder_black_48dp"/>
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/problemTitle"
+            android:textColorHint="@android:color/black"
+            android:layout_below="@+id/img"
+            android:hint="@string/problemTitle"/>
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/solution"
+            android:textColorHint="@android:color/black"
+            android:layout_below="@+id/problemTitle"
+            android:hint="@string/solution"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:id="@+id/img"
+            android:layout_below="@+id/camera"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:text="Ugent"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_below="@+id/solution"
+            android:layout_marginRight="100dp"
+            android:layout_marginEnd="100dp"
+            android:id="@+id/checkBox" />
+
+        <Button
+            android:text="Submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/problemTitle"
+            android:layout_toRightOf="@+id/checkBox"
+            android:layout_toEndOf="@+id/checkBox"
+            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="40dp"
+            android:id="@+id/button3" />
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

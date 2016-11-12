@@ -1,0 +1,21 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=17:04:9F:C3:16:3B:91:E4:6D:65:D5:C0:3E:33:02:F6:7C:E0:D1:16%3Bcom.droiddigger.adminapp
+
+    You can also add your credentials to an existing key, using this line:
+    17:04:9F:C3:16:3B:91:E4:6D:65:D5:C0:3E:33:02:F6:7C:E0:D1:16;com.droiddigger.adminapp
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyBwLKeLO5XsHwoAlwupJ3qTkPcFaM7STUI
+    </string>
+</resources>
