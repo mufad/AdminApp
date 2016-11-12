@@ -74,8 +74,6 @@ import pub.devrel.easypermissions.EasyPermissions;
 public class MainActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
-    public static String lng;
-    public static String lat;
     private View mLayout;
     private int REQUEST_LOCATION_FINE = 1;
 
@@ -127,6 +125,9 @@ public class MainActivity extends AppCompatActivity implements
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API).build();
+        if(mFirebaseUser.getEmail().equalsIgnoreCase("jahanmonwar@gmail.com")){
+            startActivity(new Intent(MainActivity.this, MapsActivity.class));
+        }
         Snackbar snackbar = Snackbar.make(coordinatorLayout, "Hi " + mFirebaseUser.getDisplayName(), Snackbar.LENGTH_LONG);
         snackbar.show();
         Calendar calendar = Calendar.getInstance();
@@ -140,13 +141,8 @@ public class MainActivity extends AppCompatActivity implements
         location = find_Location(MainActivity.this);
         latString=location.getLatitude()+"";
         longString=location.getLongitude()+"";
-        lat=latString;
-        lng=longString;
         Toast.makeText(MainActivity.this,latString+" "+longString,Toast.LENGTH_SHORT).show();
 
-        //Register Device With FireBase Cloud Messaging For Push Notification
-        FirebaseMessaging.getInstance().subscribeToTopic("test");
-        FirebaseInstanceId.getInstance().getToken();
     }
     public Location find_Location(Context con) {
         Log.d("Find Location", "in find_location");
@@ -311,8 +307,13 @@ public class MainActivity extends AppCompatActivity implements
         mFirebaseDatabaseReference.updateChildren(childUpdates);
         Snackbar snackbar = Snackbar.make(coordinatorLayout, "Product Added", Snackbar.LENGTH_SHORT);
         snackbar.show();
+        mFirebaseAuth.signOut();
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+        mFirebaseUser = null;
+        startActivity(new Intent(MainActivity.this, SIgninActivity.class));
 
     }
+
 
     public void openCamera(View view) {
         Intent photoCaptureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

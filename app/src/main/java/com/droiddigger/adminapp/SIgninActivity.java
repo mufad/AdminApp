@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -53,11 +54,15 @@ public class SIgninActivity extends AppCompatActivity implements GoogleApiClient
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter adapter;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+        toolbar= (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Amar Dhaka");
         // Sign In Button
         mSignInButton = (FloatingActionButton) findViewById(R.id.sign_in_button);
         // Set on click listeners for Sign In Button
@@ -78,11 +83,10 @@ public class SIgninActivity extends AppCompatActivity implements GoogleApiClient
         //You need to include google-services.json (downloaded from firebase console) file under the "app" folder of this project.
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser=mFirebaseAuth.getCurrentUser();
-        if(mFirebaseUser!=null){
-            startActivity(new Intent(SIgninActivity.this, MainActivity.class));
-        }
+
 
         parseData();
+        Log.e("SIZE", posts.size()+"");
         recyclerView=(RecyclerView)findViewById(R.id.recyclerViewMain);
         layoutManager =new LinearLayoutManager(SIgninActivity.this);
         recyclerView.setLayoutManager(layoutManager);
@@ -90,6 +94,13 @@ public class SIgninActivity extends AppCompatActivity implements GoogleApiClient
         adapter =new RecyclerViewAdapter(posts);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+        if(mFirebaseUser!=null){
+            if(mFirebaseUser.getEmail().equalsIgnoreCase("jahanmonwar@gmail.com")){
+                Intent intent = new Intent(SIgninActivity.this,MapsActivity.class);
+                intent.putExtra("list", adapter.getDataSet());
+                startActivity(intent);
+            }
+        }
     }
 
     @Override
@@ -129,6 +140,7 @@ public class SIgninActivity extends AppCompatActivity implements GoogleApiClient
                             Toast.makeText(SIgninActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         } else {
+
                             startActivity(new Intent(SIgninActivity.this, MainActivity.class));
                             finish();
                         }

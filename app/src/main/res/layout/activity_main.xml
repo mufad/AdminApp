@@ -60,15 +60,13 @@
             android:id="@+id/checkBox" />
 
         <Button
-            android:text="Submit"
+            android:text="Submit Problem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/problemTitle"
-            android:layout_toRightOf="@+id/checkBox"
-            android:layout_toEndOf="@+id/checkBox"
-            android:layout_marginLeft="19dp"
-            android:layout_marginStart="19dp"
-            android:layout_marginTop="40dp"
+            android:theme="@style/MyButton"
+            android:textColor="@android:color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
             android:id="@+id/button3" />
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -2,6 +2,7 @@ package com.droiddigger.adminapp;
 
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +10,7 @@ import java.util.Map;
  * Created by mufad on 11/11/2016.
  */
 
-public class Post {
+public class Post implements Serializable{
     String title, imageUrl, userName, etDay, status, lat, longt, timestamp, solveDate, key, solution, urgency;
 
     public Post() {

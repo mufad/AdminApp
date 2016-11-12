@@ -5,22 +5,26 @@ package com.droiddigger.adminapp;
  */
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    List<Post> dataList;
+    ArrayList<Post> dataList;
     Context context;
-    RecyclerViewAdapter(List<Post> list){
+    RecyclerViewAdapter(ArrayList<Post> list){
         this.dataList=list;
     }
     @Override
@@ -41,6 +45,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         String url=dataList.get(position).getImageUrl();
         ImageView circleImageView=(((ImageViewHolder) holder).imageView);
         Glide.with(context).load(url).into(circleImageView);
+        int [] color={R.color.bg1, R.color.bg2, R.color.bg3};
+        Random r = new Random();
+        int n=r.nextInt(3);
+        ((ImageViewHolder)holder).container.setBackgroundColor(context.getResources().getColor(color[n]));
 
 
     }
@@ -54,6 +62,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public class ImageViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView title, user, date, daystogo;
+        LinearLayout container;
 
         public ImageViewHolder(View itemView) {
             super(itemView);
@@ -62,7 +71,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             user=(TextView)itemView.findViewById(R.id.postedByText);
             date=(TextView)itemView.findViewById(R.id.dateText);
             daystogo=(TextView)itemView.findViewById(R.id.daysToSolve);
+            container=(LinearLayout)itemView.findViewById(R.id.container);
         }
     }
 
+    public ArrayList<Post> getDataSet(){
+        notifyDataSetChanged();
+        Log.e("mufsize",getItemCount()+"");
+        return dataList;
+    }
+
 }
+
